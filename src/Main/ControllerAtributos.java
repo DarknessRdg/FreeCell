@@ -78,7 +78,5 @@ public abstract  class ControllerAtributos implements Initializable {
     protected ArrayList<Carta> pilha7 = new ArrayList<>();
     protected ArrayList<Carta> pilha8 = new ArrayList<>();
 
-    protected ArrayList[] arrayDePilhas =  new ArrayList[]{
-            pilha1, pilha2, pilha3, pilha4, pilha5, pilha6, pilha7, pilha8
-    };
+
 }
