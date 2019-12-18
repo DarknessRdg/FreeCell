@@ -19,7 +19,7 @@ public class Controller extends ControllerAtributos {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        embararCartas();
+        embaralharCartas();
         distribuirCartas();
     }
 
@@ -27,7 +27,7 @@ public class Controller extends ControllerAtributos {
      * Metodo para embaralhar todas as caratas antes de
      * distribuir nas pilhas de cartas
      */
-    private void embararCartas() {
+    private void embaralharCartas() {
         Collections.shuffle(CARTAS_EMBARALHADAS);
     }
 
