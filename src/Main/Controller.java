@@ -144,17 +144,20 @@ public class Controller extends ControllerAtributos {
      */
     private void selecionarCarta(Carta carta) {
         cartaSelecionada = carta;
+
+        DropShadow shadow = getImageShadow();
+        shadow.setColor(Color.rgb(227, 198, 54));
+        shadow.setHeight(shadow.getHeight() + 20);
+        shadow.setWidth(shadow.getWidth() + 20);
+        carta.getImage().setEffect(shadow);
     }
 
     /**
      * Metodo para descelecionar uma carta
      */
     private void deselecionarCarta() {
+        cartaSelecionada.getImage().setEffect(getImageShadow());
         cartaSelecionada = null;
-    }
-
-    private void adicionarCartaNaPilha() {
-
     }
 
     /**
