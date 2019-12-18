@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller">
+   <children>
+      <AnchorPane layoutX="25.0" prefHeight="138.0" prefWidth="360.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <AnchorPane fx:id="vazia1" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia2" layoutX="89.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia3" layoutX="180.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia4" layoutX="275.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="426.0" layoutY="10.0" prefHeight="138.0" prefWidth="360.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <AnchorPane fx:id="copas" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../cartas/naipes/copas.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="espadas" layoutX="89.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ouros" layoutX="180.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paus" layoutX="275.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="50.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <AnchorPane fx:id="containerPilha1" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha2" layoutX="104.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha3" layoutX="217.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha4" layoutX="332.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha5" layoutX="451.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha6" layoutX="568.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha7" layoutX="686.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha8" layoutX="789.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
