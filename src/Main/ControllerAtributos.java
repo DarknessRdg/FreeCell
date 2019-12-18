@@ -63,17 +63,22 @@ public abstract  class ControllerAtributos implements Initializable {
      */
     protected ArrayList<Carta> CARTAS_EMBARALHADAS = Carta.loadCartas();
 
+    protected Carta cartaSelecionada = null;
+
     /*
      * Pilha com os objetos de cartas de cada
      * continer de pilha
      */
-    protected ArrayList<Carta> pilha1;
-    protected ArrayList<Carta> pilha2;
-    protected ArrayList<Carta> pilha3;
-    protected ArrayList<Carta> pilha4;
-    protected ArrayList<Carta> pilha5;
-    protected ArrayList<Carta> pilha6;
-    protected ArrayList<Carta> pilha7;
-    protected ArrayList<Carta> pilha8;
+    protected ArrayList<Carta> pilha1 = new ArrayList<>();
+    protected ArrayList<Carta> pilha2 = new ArrayList<>();
+    protected ArrayList<Carta> pilha3 = new ArrayList<>();
+    protected ArrayList<Carta> pilha4 = new ArrayList<>();
+    protected ArrayList<Carta> pilha5 = new ArrayList<>();
+    protected ArrayList<Carta> pilha6 = new ArrayList<>();
+    protected ArrayList<Carta> pilha7 = new ArrayList<>();
+    protected ArrayList<Carta> pilha8 = new ArrayList<>();
 
+    protected ArrayList[] arrayDePilhas =  new ArrayList[]{
+            pilha1, pilha2, pilha3, pilha4, pilha5, pilha6, pilha7, pilha8
+    };
 }

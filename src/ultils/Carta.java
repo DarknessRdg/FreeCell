@@ -9,11 +9,19 @@ public class Carta {
     private int naipe;
     private String valor;
     private String path;
+    private int indicePilhaAtual;
 
     public Carta(int naipe, String valor) {
         this.naipe = naipe;
         this.valor = valor;
+        indicePilhaAtual = 0;
         setPath();
+    }
+
+
+    /* Sets */
+    public void setIndicePilhaAtual(int indicePilhaAtual) {
+        this.indicePilhaAtual = indicePilhaAtual;
     }
 
     private void setPath() {
@@ -44,12 +52,21 @@ public class Carta {
         return naipe;
     }
 
+    public int getIndicePilha() {
+        return indicePilhaAtual;
+    }
+
     public String getValor() {
         return valor;
     }
 
     public ImageView getImage() {
         return new ImageView(new Image(path));
+    }
+
+    @Override
+    public String toString() {
+        return getValor() + " " + getNaipe();
     }
 
     /**
