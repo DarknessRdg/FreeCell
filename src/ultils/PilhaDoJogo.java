@@ -7,8 +7,6 @@ public interface PilhaDoJogo {
 
     boolean podeEmpilhar(Carta carta);
 
-    boolean estaOrdenadoApartirDe(int i);
-
     Carta get(int i);
 
     int indexOf(Carta carta);

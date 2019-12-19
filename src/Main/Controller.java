@@ -1,13 +1,13 @@
 package Main;
 
 
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import ultils.Carta;
-import ultils.PilhaDoJogo;
-import ultils.PilhaIntermediaria;
+import ultils.*;
 
 import java.net.URL;
 import java.util.Collections;
@@ -23,6 +23,27 @@ public class Controller extends ControllerAtributos {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         embaralharCartas();
         distribuirCartas();
+    }
+
+    @FXML
+    void addCopas(MouseEvent event) {
+        if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.COPAS)
+            adicionarCartaNaPilhaDeNaipes(9);
+    }
+    @FXML
+    void addEspadas(MouseEvent event) {
+        if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.ESPADAS)
+            adicionarCartaNaPilhaDeNaipes(10);
+    }
+    @FXML
+    void addOuros(MouseEvent event) {
+        if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.OUROS)
+            adicionarCartaNaPilhaDeNaipes(11);
+    }
+    @FXML
+    void addPaus(MouseEvent event) {
+        if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.PAUS)
+            adicionarCartaNaPilhaDeNaipes(12);
     }
 
     /**
@@ -64,12 +85,23 @@ public class Controller extends ControllerAtributos {
         pane.getChildren().add(carta.getImage());
 
         Node newImage = pane.getChildren().get(qntCartas);
-        newImage.setLayoutY(qntCartas * 27);
-        newImage.setEffect(getImageShadow());
+        if ((pane == copas || pane == ouros || pane == paus || pane == espadas)) {
+            newImage.setLayoutY(0);
+            newImage.setLayoutX(0);
 
-        newImage.setOnMouseClicked(mouseEvent -> {
-            clickCarta(carta);
-        });
+            newImage.setOnMouseClicked(mouseEvent -> {
+                // fazer nada ao clicar na imagem que esta
+                // na pilha de naipes
+            });
+        } else {
+            newImage.setLayoutY(qntCartas * 27);
+            newImage.setEffect(getImageShadow());
+
+            newImage.setOnMouseClicked(mouseEvent -> {
+                clickCarta(carta);
+            });
+        }
+
     }
 
     /**
@@ -83,7 +115,7 @@ public class Controller extends ControllerAtributos {
 
         int qntCartas = pane.getChildren().size();
 
-        pane.getChildren().remove(qntCartas - 1);
+        pane.getChildren().remove(pane.getChildren().size() - 1);
     }
 
     /**
@@ -113,8 +145,7 @@ public class Controller extends ControllerAtributos {
      * @param carta: carta que recebeu o clique
      */
     private void tentarSelecinarCarta(Carta carta) {
-        PilhaIntermediaria pilha = getPilha(carta.getIndicePilha());
-
+        PilhaIntermediaria pilha = (PilhaIntermediaria) getPilha(carta.getIndicePilha());
         if (pilha.indexOf(carta) == pilha.size() - 1)  // se for a ultima
             selecionarCarta(carta);
         else {
@@ -135,7 +166,7 @@ public class Controller extends ControllerAtributos {
     private void tentarAdicionarCarta(Carta carta) {
         if (carta.getIndicePilha() != cartaSelecionada.getIndicePilha()) {  // clicando em uma pilha diferente
 
-            PilhaIntermediaria pilhaClicada = getPilha(carta.getIndicePilha());
+            PilhaIntermediaria pilhaClicada = (PilhaIntermediaria) getPilha(carta.getIndicePilha());
 
             if (pilhaClicada.indexOf(carta) == pilhaClicada.size() - 1) { // clicando na ultima
 
@@ -143,24 +174,28 @@ public class Controller extends ControllerAtributos {
                     // carta clicada é 1 antes da carta selecionada
 
                     adicionarCartaSelecionada(carta.getIndicePilha());
-
-                } else {
-                    System.out.println(" nao pode empilhar ");
                 }
             }
         }
     }
 
+    /**
+     * Metodo para adicionar 1 cara ou N cartas selecionadas em uma
+     * pilha intermediaria dada o numero da pilha intermediaria
+     *
+     * @param numeroDaPilha: numero da pilha intermediaria que deseja adicionar
+     */
     private void adicionarCartaSelecionada(int numeroDaPilha) {
-        PilhaDoJogo pilhaDeRemover = getPilha(cartaSelecionada.getIndicePilha());
+        PilhaIntermediaria pilhaDeRemover = (PilhaIntermediaria) getPilha(cartaSelecionada.getIndicePilha());
 
-        int index = getPilha(cartaSelecionada.getIndicePilha()).indexOf(cartaSelecionada);
+        int index = pilhaDeRemover.indexOf(cartaSelecionada);
 
         PilhaIntermediaria pilhaAux = new PilhaIntermediaria();  // pilha pra inserir cartas removidas, pra
         // simular uma fila com duas pilhas
 
         Carta cartaRemovida;
         while (index < pilhaDeRemover.size() ) {
+            System.out.println("size " + pilhaDeRemover.size());
             cartaRemovida = pilhaDeRemover.desempilha();
             pilhaAux.empilha(cartaRemovida);
         }
@@ -173,6 +208,26 @@ public class Controller extends ControllerAtributos {
             cartaRemovida.setIndicePilhaAtual(numeroDaPilha);
             addCartaNaAnchoPane(cartaRemovida);
             desselecionarCarta();
+        }
+    }
+
+    private void adicionarCartaNaPilhaDeNaipes(int numeroPilha) {
+        if (cartaSelecionada != null) {
+            PilhaIntermediaria pilhaDeRemover = (PilhaIntermediaria) getPilha(cartaSelecionada.getIndicePilha());
+            if (pilhaDeRemover.indexOf(cartaSelecionada) == pilhaDeRemover.size() - 1) {  // esta tentando inserir
+                // somente 1 carta
+
+                PilhaDeNaipes pilha = (PilhaDeNaipes) getPilha(numeroPilha);
+
+                if (pilha.podeEmpilhar(cartaSelecionada)) {
+                    cartaSelecionada = pilhaDeRemover.desempilha();
+                    cartaSelecionada.setIndicePilhaAtual(numeroPilha);
+
+                    addCartaNaAnchoPane(cartaSelecionada);
+                    desselecionarCarta();
+                }
+
+            }
         }
     }
 
@@ -225,6 +280,8 @@ public class Controller extends ControllerAtributos {
     private AnchorPane getAnchorPaneDaPilha(int pilhaDaCarta) {
         AnchorPane pane;
         switch (pilhaDaCarta) {
+
+            // container das pilhas intermediarias
             case 1:
                 pane = containerPilha1;
                 break;
@@ -246,8 +303,22 @@ public class Controller extends ControllerAtributos {
             case 7:
                 pane = containerPilha7;
                 break;
-            default:
+            case 8:
                 pane = containerPilha8;
+                break;
+
+            // container das pilhas de naipes
+            case 9:
+                pane = copas;
+                break;
+            case 10:
+                pane = espadas;
+                break;
+            case 11:
+                pane = ouros;
+                break;
+            default:
+                pane = paus;
                 break;
         }
         return pane;
@@ -260,9 +331,10 @@ public class Controller extends ControllerAtributos {
      * @param pilhaDaCarta: numero da pilha
      * @return ArrayList<Carta>
      */
-    private PilhaIntermediaria getPilha(int pilhaDaCarta) {
-        PilhaIntermediaria pilha;
+    private PilhaDoJogo getPilha(int pilhaDaCarta) {
+        PilhaDoJogo pilha;
         switch (pilhaDaCarta) {
+            // pilhas intermediarias
             case 1:
                 pilha = pilha1;
                 break;
@@ -284,8 +356,22 @@ public class Controller extends ControllerAtributos {
             case 7:
                 pilha = pilha7;
                 break;
-            default:
+            case 8:
                 pilha = pilha8;
+                break;
+
+            // pilhas de naipes
+            case 9:
+                pilha = pilhaCopas;
+                break;
+            case 10:
+                pilha = pilhaEspadas;
+                break;
+            case 11:
+                pilha = pilhaOuros;
+                break;
+            default:
+                pilha = pilhaPus;
                 break;
         }
         return pilha;

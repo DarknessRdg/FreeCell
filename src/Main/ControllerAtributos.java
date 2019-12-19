@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import ultils.Carta;
+import ultils.PilhaDeNaipes;
 import ultils.PilhaIntermediaria;
 
 import java.util.ArrayList;
@@ -78,5 +79,13 @@ public abstract  class ControllerAtributos implements Initializable {
     protected PilhaIntermediaria pilha7 = new PilhaIntermediaria();
     protected PilhaIntermediaria pilha8 = new PilhaIntermediaria();
 
+    /*
+     * Objeto de PilhaIntermediaria para cada pilha de naipe
+     */
+
+    PilhaDeNaipes pilhaOuros = new PilhaDeNaipes();
+    PilhaDeNaipes pilhaCopas = new PilhaDeNaipes();
+    PilhaDeNaipes pilhaPus = new PilhaDeNaipes();
+    PilhaDeNaipes pilhaEspadas = new PilhaDeNaipes();
 
 }
