@@ -1,5 +1,6 @@
 package ultils;
 
+
 /**
  * Interface com os metodos obrigatorios para toda pilha do jogo
  */
@@ -16,5 +17,4 @@ public interface PilhaDoJogo {
     Carta desempilha();
 
     int size();
-
 }

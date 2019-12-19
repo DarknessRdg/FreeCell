@@ -2,6 +2,7 @@ package ultils;
 
 import java.util.ArrayList;
 
+
 public class PilhaDeNaipes implements PilhaDoJogo {
     ArrayList<Carta> pilha;  // ArrayList que simulará a pilha
 
