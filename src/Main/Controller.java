@@ -45,6 +45,34 @@ public class Controller extends ControllerAtributos {
         if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.PAUS)
             adicionarCartaNaPilhaDeNaipes(12);
     }
+    @FXML
+    void addVazia1(MouseEvent event) {
+        if (cartaSelecionada != null)
+            adicionarCartaNaVazia(13);
+    }
+    @FXML
+    void addVazia2(MouseEvent event) {
+        if (cartaSelecionada != null)
+            adicionarCartaNaVazia(14);
+    }
+    @FXML
+    void addVazia3(MouseEvent event) {
+        if (cartaSelecionada != null)
+            adicionarCartaNaVazia(15);
+    }
+    @FXML
+    void addVazia4(MouseEvent event) {
+        if (cartaSelecionada != null)
+            adicionarCartaNaVazia(16);
+    }
+
+    private boolean fimDeJogo() {
+        for (int i = 1; i <= 15; i++) {
+            if (getPilha(i).size() != 0)
+                return false;
+        }
+        return true;
+    }
 
     /**
      * Metodo para embaralhar todas as caratas antes de
@@ -92,6 +120,23 @@ public class Controller extends ControllerAtributos {
             newImage.setOnMouseClicked(mouseEvent -> {
                 // fazer nada ao clicar na imagem que esta
                 // na pilha de naipes
+            });
+
+            if (fimDeJogo()) {
+                System.out.println("FIM DE JOGO !!!!!!!!!!!!!!!!!");
+
+                try {
+                    Thread.sleep(1000000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (pane == vazia1 || pane == vazia2 || pane == vazia3 || pane == vazia4) {
+            newImage.setLayoutY(0);
+            newImage.setLayoutX(0);
+
+            newImage.setOnMouseClicked(mouseEvent -> {
+                clickCarta(carta);
             });
         } else {
             newImage.setLayoutY(qntCartas * 27);
@@ -230,6 +275,20 @@ public class Controller extends ControllerAtributos {
         }
     }
 
+    private void adicionarCartaNaVazia(int numeroPilha) {
+        if (cartaSelecionada != null && getAnchorPaneDaPilha(numeroPilha).getChildren().size() == 0) {
+            PilhaIntermediaria pilhaDaCarta = (PilhaIntermediaria) getPilha(cartaSelecionada.getIndicePilha());
+
+            if (pilhaDaCarta.indexOf(cartaSelecionada) == pilhaDaCarta.size() - 1) {
+                pilhaDaCarta.desempilha();
+
+                cartaSelecionada.setIndicePilhaAtual(numeroPilha);
+                addCartaNaAnchoPane(cartaSelecionada);
+                desselecionarCarta();
+            }
+        }
+    }
+
     /**
      * Metodo para selecionar uma carta
      *
@@ -316,8 +375,22 @@ public class Controller extends ControllerAtributos {
             case 11:
                 pane = ouros;
                 break;
-            default:
+            case 12:
                 pane = paus;
+                break;
+
+            // container das posicoes vazias pra colocar 1 carta
+            case 13:
+                pane = vazia1;
+                break;
+            case 14:
+                pane = vazia2;
+                break;
+            case 15:
+                pane = vazia3;
+                break;
+            default:
+                pane = vazia4;
                 break;
         }
         return pane;
@@ -369,8 +442,21 @@ public class Controller extends ControllerAtributos {
             case 11:
                 pilha = pilhaOuros;
                 break;
-            default:
+            case 12:
                 pilha = pilhaPus;
+                break;
+
+            case 13:
+                pilha = pilhaVazia1;
+                break;
+            case 14:
+                pilha = pilhaVazia2;
+                break;
+            case 15:
+                pilha = pilhaVazia3;
+                break;
+            default:
+                pilha = pilhaVazia4;
                 break;
         }
         return pilha;

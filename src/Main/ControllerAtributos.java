@@ -80,12 +80,19 @@ public abstract  class ControllerAtributos implements Initializable {
     protected PilhaIntermediaria pilha8 = new PilhaIntermediaria();
 
     /*
-     * Objeto de PilhaIntermediaria para cada pilha de naipe
+     * Objeto de PilhaDeNaipes para cada pilha de naipe
      */
-
     PilhaDeNaipes pilhaOuros = new PilhaDeNaipes();
     PilhaDeNaipes pilhaCopas = new PilhaDeNaipes();
     PilhaDeNaipes pilhaPus = new PilhaDeNaipes();
     PilhaDeNaipes pilhaEspadas = new PilhaDeNaipes();
+
+    /*
+     * Objeto de PilhaIntermediaria para cada pilha de naipe
+     */
+    PilhaIntermediaria pilhaVazia1 = new PilhaIntermediaria();
+    PilhaIntermediaria pilhaVazia2 = new PilhaIntermediaria();
+    PilhaIntermediaria pilhaVazia3 = new PilhaIntermediaria();
+    PilhaIntermediaria pilhaVazia4 = new PilhaIntermediaria();
 
 }

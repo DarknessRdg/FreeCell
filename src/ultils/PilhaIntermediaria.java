@@ -50,8 +50,7 @@ public class PilhaIntermediaria implements PilhaDoJogo {
     public boolean podeEmpilhar(Carta carta) {
         Carta ultima = get(pilha.size() - 1);
 
-        return estaoOrdenadas(ultima, carta) &&
-                Naipes.saoDeCoresDiferentes(ultima.getNaipe(), carta.getNaipe());
+        return estaoOrdenadas(ultima, carta);
     }
 
     /**
@@ -74,6 +73,8 @@ public class PilhaIntermediaria implements PilhaDoJogo {
             posterior = get(i + 1);
         }
 
+        System.out.println(anterior + "  " + posterior);
+
         return estaoOrdenadas(anterior, posterior);
     }
 
@@ -88,6 +89,7 @@ public class PilhaIntermediaria implements PilhaDoJogo {
      * @return boolean: se as duas cartas estao odenadas
      */
     private boolean estaoOrdenadas(Carta anterior, Carta posterior) {
-        return ValorDaCarta.toInt(posterior.getValor()) + 1 == ValorDaCarta.toInt(anterior.getValor());
+        return ValorDaCarta.toInt(posterior.getValor()) + 1 == ValorDaCarta.toInt(anterior.getValor()) &&
+                Naipes.saoDeCoresDiferentes(anterior.getNaipe(), posterior.getNaipe());
     }
 }

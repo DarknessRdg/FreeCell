@@ -12,10 +12,10 @@
    <children>
       <AnchorPane layoutX="25.0" prefHeight="138.0" prefWidth="360.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
          <children>
-            <AnchorPane fx:id="vazia1" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
-            <AnchorPane fx:id="vazia2" layoutX="89.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
-            <AnchorPane fx:id="vazia3" layoutX="180.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
-            <AnchorPane fx:id="vazia4" layoutX="275.0" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia1" onMouseClicked="#addVazia1" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia2" layoutX="89.0" onMouseClicked="#addVazia2" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia3" layoutX="180.0" onMouseClicked="#addVazia3" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
+            <AnchorPane fx:id="vazia4" layoutX="275.0" onMouseClicked="#addVazia4" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: #b7b7b7; -fx-border-color: black;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="426.0" layoutY="10.0" prefHeight="138.0" prefWidth="360.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="10.0">

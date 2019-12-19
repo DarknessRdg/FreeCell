@@ -24,7 +24,9 @@ public class Naipes {
     static boolean saoDeCoresDiferentes(int naipe1, int naipe2) {
         // cores vermelhas sao impares
         // cores pretas sao pares
+        boolean ehPar1 = naipe1 % 2 == 0;
+        boolean ehPar2 = naipe2 % 2 == 0;
 
-        return naipe1 % 2 != naipe2 % 2;
+        return ehPar1 != ehPar2;
     }
 }
