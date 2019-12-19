@@ -113,9 +113,7 @@ public class Controller extends ControllerAtributos {
         int pilhaDaCarta = carta.getIndicePilha();
         AnchorPane pane = getAnchorPaneDaPilha(pilhaDaCarta);
 
-        int qntCartas = pane.getChildren().size();
-
-        pane.getChildren().remove(pane.getChildren().size() - 1);
+        pane.getChildren().remove(carta.getImage());
     }
 
     /**
@@ -205,6 +203,7 @@ public class Controller extends ControllerAtributos {
             cartaRemovida = pilhaAux.desempilha();
 
             removerCartaDaAnchoPane(cartaRemovida);
+
             cartaRemovida.setIndicePilhaAtual(numeroDaPilha);
             addCartaNaAnchoPane(cartaRemovida);
             desselecionarCarta();
