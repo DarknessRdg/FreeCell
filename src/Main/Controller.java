@@ -6,10 +6,10 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import ultils.Carta;
-import ultils.ValorDaCarta;
+import ultils.PilhaDoJogo;
+import ultils.PilhaIntermediaria;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -56,7 +56,7 @@ public class Controller extends ControllerAtributos {
      */
     private void addCartaNaAnchoPane(Carta carta) {
         int pilhaDaCarta = carta.getIndicePilha();
-        getPilha(pilhaDaCarta).add(carta);
+        getPilha(pilhaDaCarta).empilha(carta);
         AnchorPane pane = getAnchorPaneDaPilha(pilhaDaCarta);
 
         int qntCartas = pane.getChildren().size();
@@ -95,18 +95,34 @@ public class Controller extends ControllerAtributos {
     private void clickCarta(Carta carta) {
 
         if (cartaSelecionada == null) {
-            ArrayList<Carta> pilha = getPilha(carta.getIndicePilha());
+            tentarSelecinarCarta(carta);
 
-            if (pilha.indexOf(carta) == pilha.size() - 1)  // se for a ultima
-                selecionarCarta(carta);
-
-        } else if (carta == cartaSelecionada) {  // clicando sobre a carta para descelinar
-            deselecionarCarta();
+        } else if (carta == cartaSelecionada) {  // clicando sobre a carta para desselecionar
+            desselecionarCarta();
 
         } else {
             tentarAdicionarCarta(carta);
         }
-        System.out.println("Clicada: " + carta + " selecionada: " + cartaSelecionada);
+        System.out.println("Clicada: " + carta + "; selecionada: " + cartaSelecionada);
+    }
+
+    /**
+     * Metodo com as regras do jogo para tentar selecinar  uma carta
+     * quando nenhuma carta foi selecionada ainda
+     *
+     * @param carta: carta que recebeu o clique
+     */
+    private void tentarSelecinarCarta(Carta carta) {
+        PilhaIntermediaria pilha = getPilha(carta.getIndicePilha());
+
+        if (pilha.indexOf(carta) == pilha.size() - 1)  // se for a ultima
+            selecionarCarta(carta);
+        else {
+            int index = pilha.indexOf(carta);
+
+            if (pilha.estaOrdenadoApartirDe(index))
+                selecionarCarta(carta);
+        }
     }
 
     /**
@@ -119,21 +135,44 @@ public class Controller extends ControllerAtributos {
     private void tentarAdicionarCarta(Carta carta) {
         if (carta.getIndicePilha() != cartaSelecionada.getIndicePilha()) {  // clicando em uma pilha diferente
 
-            ArrayList<Carta> pilhaClicada = getPilha(carta.getIndicePilha());
+            PilhaIntermediaria pilhaClicada = getPilha(carta.getIndicePilha());
+
             if (pilhaClicada.indexOf(carta) == pilhaClicada.size() - 1) { // clicando na ultima
 
-                if (carta.getNaipe() % 2 != cartaSelecionada.getNaipe() % 2) { // naipes de cores diferetes
+                if (pilhaClicada.podeEmpilhar(cartaSelecionada)) {
+                    // carta clicada é 1 antes da carta selecionada
 
-                    if (ValorDaCarta.toInt(carta.getValor()) == ValorDaCarta.toInt(cartaSelecionada.getValor()) + 1) {
-                        // carta clicada é 1 antes da carta selecionada
-                        removerCartaDaAnchoPane(cartaSelecionada);
+                    adicionarCartaSelecionada(carta.getIndicePilha());
 
-                        cartaSelecionada.setIndicePilhaAtual(carta.getIndicePilha());
-                        addCartaNaAnchoPane(cartaSelecionada);
-                        deselecionarCarta();
-                    }
+                } else {
+                    System.out.println(" nao pode empilhar ");
                 }
             }
+        }
+    }
+
+    private void adicionarCartaSelecionada(int numeroDaPilha) {
+        PilhaDoJogo pilhaDeRemover = getPilha(cartaSelecionada.getIndicePilha());
+
+        int index = getPilha(cartaSelecionada.getIndicePilha()).indexOf(cartaSelecionada);
+
+        PilhaIntermediaria pilhaAux = new PilhaIntermediaria();  // pilha pra inserir cartas removidas, pra
+        // simular uma fila com duas pilhas
+
+        Carta cartaRemovida;
+        while (index < pilhaDeRemover.size() ) {
+            cartaRemovida = pilhaDeRemover.desempilha();
+            pilhaAux.empilha(cartaRemovida);
+        }
+
+        int size = pilhaAux.size();
+        for (int i = 0; i < size; i++) {
+            cartaRemovida = pilhaAux.desempilha();
+
+            removerCartaDaAnchoPane(cartaRemovida);
+            cartaRemovida.setIndicePilhaAtual(numeroDaPilha);
+            addCartaNaAnchoPane(cartaRemovida);
+            desselecionarCarta();
         }
     }
 
@@ -155,8 +194,9 @@ public class Controller extends ControllerAtributos {
     /**
      * Metodo para descelecionar uma carta
      */
-    private void deselecionarCarta() {
-        cartaSelecionada.getImage().setEffect(getImageShadow());
+    private void desselecionarCarta() {
+        if (cartaSelecionada != null)
+            cartaSelecionada.getImage().setEffect(getImageShadow());
         cartaSelecionada = null;
     }
 
@@ -220,8 +260,8 @@ public class Controller extends ControllerAtributos {
      * @param pilhaDaCarta: numero da pilha
      * @return ArrayList<Carta>
      */
-    private ArrayList<Carta> getPilha(int pilhaDaCarta) {
-        ArrayList<Carta> pilha;
+    private PilhaIntermediaria getPilha(int pilhaDaCarta) {
+        PilhaIntermediaria pilha;
         switch (pilhaDaCarta) {
             case 1:
                 pilha = pilha1;

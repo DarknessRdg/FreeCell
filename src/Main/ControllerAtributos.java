@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import ultils.Carta;
+import ultils.PilhaIntermediaria;
 
 import java.util.ArrayList;
 
@@ -66,17 +67,16 @@ public abstract  class ControllerAtributos implements Initializable {
     protected Carta cartaSelecionada = null;
 
     /*
-     * Pilha com os objetos de cartas de cada
-     * continer de pilha
+     * Objeto de PilhaIntermediaria para cada pilha intermadiaria
      */
-    protected ArrayList<Carta> pilha1 = new ArrayList<>();
-    protected ArrayList<Carta> pilha2 = new ArrayList<>();
-    protected ArrayList<Carta> pilha3 = new ArrayList<>();
-    protected ArrayList<Carta> pilha4 = new ArrayList<>();
-    protected ArrayList<Carta> pilha5 = new ArrayList<>();
-    protected ArrayList<Carta> pilha6 = new ArrayList<>();
-    protected ArrayList<Carta> pilha7 = new ArrayList<>();
-    protected ArrayList<Carta> pilha8 = new ArrayList<>();
+    protected PilhaIntermediaria pilha1 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha2 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha3 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha4 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha5 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha6 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha7 = new PilhaIntermediaria();
+    protected PilhaIntermediaria pilha8 = new PilhaIntermediaria();
 
 
 }
