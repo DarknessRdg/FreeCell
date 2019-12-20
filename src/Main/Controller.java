@@ -109,6 +109,38 @@ public class Controller extends ControllerAtributos {
         if (cartaSelecionada != null)
             adicionarCartaNaVazia(16);
     }
+    @FXML
+    void addAnchorPane1(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(1);
+    }
+    @FXML
+    void addAnchorPane2(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(2);
+    }
+    @FXML
+    void addAnchorPane3(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(3);
+    }
+    @FXML
+    void addAnchorPane4(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(4);
+    }
+    @FXML
+    void addAnchorPane5(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(5);
+    }
+    @FXML
+    void addAnchorPane6(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(6);
+    }
+    @FXML
+    void addAnchorPane7(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(7);
+    }
+    @FXML
+    void addAnchorPane8(MouseEvent event) {
+        addCartaKNaAnchorPaneVazia(8);
+    }
 
     /**
      * Metodo para verificar fim do jogo
@@ -207,6 +239,15 @@ public class Controller extends ControllerAtributos {
         AnchorPane pane = getAnchorPaneDaPilha(pilhaDaCarta);
 
         pane.getChildren().remove(carta.getImage());
+    }
+
+    private void addCartaKNaAnchorPaneVazia(int achor) {
+        AnchorPane pane = getAnchorPaneDaPilha(achor);
+        if (getPilha(achor).size() == 0) {
+            if (cartaSelecionada != null && cartaSelecionada.getValor().equals("k")) {
+                adicionarCartaSelecionada(achor);
+            }
+        }
     }
 
     /**

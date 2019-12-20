@@ -57,14 +57,14 @@
       </AnchorPane>
       <AnchorPane layoutX="50.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
          <children>
-            <AnchorPane fx:id="containerPilha1" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha2" layoutX="104.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha3" layoutX="217.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha4" layoutX="332.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha5" layoutX="451.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha6" layoutX="568.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha7" layoutX="686.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="containerPilha8" layoutX="789.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha1" onMouseClicked="#addAnchorPane1" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha2" onMouseClicked="#addAnchorPane2" layoutX="104.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha3" onMouseClicked="#addAnchorPane3" layoutX="217.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha4" onMouseClicked="#addAnchorPane4" layoutX="332.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha5" onMouseClicked="#addAnchorPane5" layoutX="451.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha6" onMouseClicked="#addAnchorPane6" layoutX="568.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha7" onMouseClicked="#addAnchorPane7" layoutX="686.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="containerPilha8" onMouseClicked="#addAnchorPane8" layoutX="789.0" prefHeight="425.0" prefWidth="71.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
