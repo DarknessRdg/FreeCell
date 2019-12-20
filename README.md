@@ -45,3 +45,7 @@ Ordem crescente das cartas: `` A - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - J - Q - 
 Para mover as cartas é preciso clicar na carta para selecioná-la e em seguida clicar no lugar que deseja movê-la.
 
 Quando uma carta for clicada, ela deverá ficar com uma cor amarela ao redor indicando que ela foi selecionada. Ela só será desselecinada caso receber um clique sobre ela novamente.
+
+A carta selecionada verá ficar como na imagem abaixo:
+
+![carta selecionada](https://github.com/DarknessRdg/FreeCell/blob/master/carta%20selecionada.png)
