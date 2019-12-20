@@ -25,52 +25,100 @@ public class Controller extends ControllerAtributos {
         distribuirCartas();
     }
 
+    /**
+     * On Click na area de carta definitiva do naipes COPAS
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addCopas(MouseEvent event) {
         if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.COPAS)
             adicionarCartaNaPilhaDeNaipes(9);
     }
+    /**
+     * On Click na area de carta definitiva do naipes ESPADAS
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addEspadas(MouseEvent event) {
         if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.ESPADAS)
             adicionarCartaNaPilhaDeNaipes(10);
     }
+    /**
+     * On Click na area de carta definitiva do naipes OUROS
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addOuros(MouseEvent event) {
         if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.OUROS)
             adicionarCartaNaPilhaDeNaipes(11);
     }
+    /**
+     * On Click na area de carta definitiva do naipes PAUS
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addPaus(MouseEvent event) {
         if (cartaSelecionada != null && cartaSelecionada.getNaipe() == Naipes.PAUS)
             adicionarCartaNaPilhaDeNaipes(12);
     }
+    /**
+     * On Click na area PRIMEIRA vazia,
+     * onde pode colcar 1 carta qualquer por vez
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addVazia1(MouseEvent event) {
         if (cartaSelecionada != null)
             adicionarCartaNaVazia(13);
     }
+    /**
+     * On Click na area SEGUNDA vazia,
+     * onde pode colcar 1 carta qualquer por vez
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addVazia2(MouseEvent event) {
         if (cartaSelecionada != null)
             adicionarCartaNaVazia(14);
     }
+    /**
+     * On Click na area TERECEIRA vazia,
+     * onde pode colcar 1 carta qualquer por vez
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addVazia3(MouseEvent event) {
         if (cartaSelecionada != null)
             adicionarCartaNaVazia(15);
     }
+    /**
+     * On Click na area QUARTA vazia,
+     * onde pode colcar 1 carta qualquer por vez
+     *
+     * @param event: evento de click do mouse
+     */
     @FXML
     void addVazia4(MouseEvent event) {
         if (cartaSelecionada != null)
             adicionarCartaNaVazia(16);
     }
 
+    /**
+     * Metodo para verificar fim do jogo
+     *
+     * @return boolean: se jogo terminou
+     */
     private boolean fimDeJogo() {
-        for (int i = 1; i <= 15; i++) {
-            if (getPilha(i).size() != 0)
+        for (int i = 9; i <= 12; i++)
+            if (getPilha(i).size() != Naipes.QNT_CARTAS_POR_NAIPE)
                 return false;
-        }
         return true;
     }
 
@@ -255,6 +303,12 @@ public class Controller extends ControllerAtributos {
         }
     }
 
+    /**
+     * Metodo para adicionar carta selecionada na pilha
+     * de naipes, pilha defiinitiva
+     *
+     * @param numeroPilha: numero da pilha correspondente
+     */
     private void adicionarCartaNaPilhaDeNaipes(int numeroPilha) {
         if (cartaSelecionada != null) {
             PilhaIntermediaria pilhaDeRemover = (PilhaIntermediaria) getPilha(cartaSelecionada.getIndicePilha());
@@ -275,6 +329,11 @@ public class Controller extends ControllerAtributos {
         }
     }
 
+    /**
+     * Metodo paraa adicionar 1 carta na area vazia
+     *
+     * @param numeroPilha: numero da pilha correspondente
+     */
     private void adicionarCartaNaVazia(int numeroPilha) {
         if (cartaSelecionada != null && getAnchorPaneDaPilha(numeroPilha).getChildren().size() == 0) {
             PilhaIntermediaria pilhaDaCarta = (PilhaIntermediaria) getPilha(cartaSelecionada.getIndicePilha());

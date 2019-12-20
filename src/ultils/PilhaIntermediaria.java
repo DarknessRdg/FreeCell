@@ -15,6 +15,12 @@ public class PilhaIntermediaria implements PilhaDoJogo {
      */
     public Carta get(int i) { return pilha.get(i); }
 
+    /**
+     * Metodo para pegar index de uma carta na pilha
+     *
+     * @param carta: carta procurada
+     * @return int: index da carta
+     */
     public int indexOf(Carta carta) { return pilha.indexOf(carta); }
 
     public int size() { return pilha.size(); }

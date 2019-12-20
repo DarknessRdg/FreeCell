@@ -22,12 +22,28 @@ public class Carta {
 
 
     /* Sets */
+
+    /**
+     * Set indice da pilha em que está atualmente,
+     * este é um atributo auxliar para facilitar manipulacao
+     * do jogo, o indice da pilha representa se é
+     * pilhaIntermediria1, 2, 3, ... ou pilhaDeNaipe1,2,... ou
+     * pilhaVazia1, 2, ...
+     *
+     * @param indicePilhaAtual: numero da pilha
+     */
     public void setIndicePilhaAtual(int indicePilhaAtual) {
         this.indicePilhaAtual = indicePilhaAtual;
     }
 
+    /**
+     * Set Image: cria e salva a ImageView da carta
+     */
     private void setImage() { image = new ImageView(new Image(path)); }
 
+    /**
+     * Set Path: salva o diretorio da carta
+     */
     private void setPath() {
         String pasta;
         switch (naipe) {
@@ -101,6 +117,13 @@ public class Carta {
         return array;
     }
 
+    /**
+     * Metodo para criar instancias de Carta() para todas as
+     * carta do Naipe passado como parametro
+     *
+     * @param naipe: numero do naipe
+     * @return ArrayLista<Carta> com todas as cartas do Naipe
+     */
     private static ArrayList<Carta> loadCartas(int naipe) {
         ArrayList<Carta> array = new ArrayList<>();
 
@@ -113,6 +136,13 @@ public class Carta {
         return array;
     }
 
+    /**
+     * Get a letra ou numero da carta, possibildades são:
+     * a, 2, 3, 4, 5, 6, 7, 8, 9, 10, j, q, k
+     *
+     * @param i: numero da carta [1..13]
+     * @return String: valor em string da carta
+     */
     private static String getValor(int i) {
         String valor;
 

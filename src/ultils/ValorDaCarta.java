@@ -6,6 +6,13 @@ import java.util.HashMap;
 public class ValorDaCarta {
     private static HashMap<String, Integer> MAPA_CARTAS = new HashMap<>();
 
+    /**
+     * Metodo para pegar um valor de uma carta em String
+     * e convertê-lo para inteiro
+     *
+     * @param valor: valor da carta
+     * @return int: inteiro que representa o numero do valor
+     */
     public static int toInt(String valor) {
         MAPA_CARTAS.put("a", 1);
         MAPA_CARTAS.put("2", 2);
