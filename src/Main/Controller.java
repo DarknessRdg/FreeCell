@@ -206,7 +206,7 @@ public class Controller extends ControllerAtributos {
                 System.out.println("FIM DE JOGO !!!!!!!!!!!!!!!!!");
 
                 try {
-                    Thread.sleep(1000000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -302,7 +302,13 @@ public class Controller extends ControllerAtributos {
 
             if (pilhaClicada.indexOf(carta) == pilhaClicada.size() - 1) { // clicando na ultima
 
-                if (pilhaClicada.podeEmpilhar(cartaSelecionada)) {
+                if (pilhaClicada == pilhaVazia1 || pilhaClicada == pilhaVazia2 || pilhaClicada == pilhaVazia3 ||
+                    pilhaClicada == pilhaVazia4) {
+
+                    if (pilhaClicada.size() == 0)
+                        adicionarCartaSelecionada(carta.getIndicePilha());
+                }
+                else if (pilhaClicada.podeEmpilhar(cartaSelecionada)) {
                     // carta clicada é 1 antes da carta selecionada
 
                     adicionarCartaSelecionada(carta.getIndicePilha());
